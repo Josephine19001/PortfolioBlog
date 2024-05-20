@@ -73,4 +73,27 @@
   .btn-secondary {
     @apply border border-secondary text-secondary border-b-2 hover:bg-secondary hover:text-black;
   }
+
+  .hover-underline {
+    @apply inline-block relative pb-2;
+
+    &::after {
+      @apply absolute bottom-0 left-1/2 w-0 bg-secondary h-[2px]  ease-linear duration-150;
+      content: '';
+      transition: width 150ms ease-linear;
+    }
+
+    &:hover::after {
+      @apply w-full left-0;
+    }
+  }
+
+  .active-link-underline {
+    @apply inline-block relative pb-2;
+
+    &::after {
+      @apply absolute bottom-0 left-0 w-full bg-secondary h-[2px];
+      content: '';
+    }
+  }
 }

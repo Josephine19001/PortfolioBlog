@@ -4,10 +4,12 @@ import Home from './routes/root';
 import Resume from './routes/resume';
 import Blogs from './routes/blogs';
 import BlogPage from './routes/blogs/blog-page';
+import NavBar from './components/shared/NavBar';
 
 const App = () => {
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
