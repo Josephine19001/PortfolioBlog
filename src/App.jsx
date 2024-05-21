@@ -5,6 +5,7 @@ import Resume from './routes/resume';
 import Blogs from './routes/blogs';
 import BlogPage from './routes/blogs/blog-page';
 import NavBar from './components/shared/NavBar';
+import Footer from './components/shared/Footer';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:blogId/:title" element={<BlogPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
