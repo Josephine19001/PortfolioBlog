@@ -1,9 +1,10 @@
 import Layout from '../components/shared/Layout';
+import HeroSection from '../components/home/HeroSection';
 
 const Home = () => {
   return (
     <Layout>
-      <div>Home page</div>
+      <HeroSection />
     </Layout>
   );
 };
