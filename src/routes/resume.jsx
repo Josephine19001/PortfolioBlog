@@ -1,5 +1,11 @@
+import Layout from '../components/shared/Layout';
+
 const Resume = () => {
-  return <div>Resume page</div>;
+  return (
+    <Layout>
+      <div>Resume page</div>
+    </Layout>
+  );
 };
 
 export default Resume;

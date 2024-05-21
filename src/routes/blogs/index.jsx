@@ -1,5 +1,11 @@
+import Layout from '../../components/shared/Layout';
+
 const Blogs = () => {
-  return <div>Blogs</div>;
+  return (
+    <Layout>
+      <div>Blogs</div>
+    </Layout>
+  );
 };
 
 export default Blogs;
