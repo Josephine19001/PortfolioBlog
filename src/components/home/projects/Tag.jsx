@@ -15,12 +15,12 @@ const Tag = ({ icon, label, bgColor, color }) => {
 };
 
 export const FrontendTag = (
-  <Tag icon={FaCode} bgColor="bg-gray" label="Frontend" />
+  <Tag icon={<FaCode />} bgColor="bg-gray" label="Frontend" />
 );
 
 export const BackendTag = (
   <Tag
-    icon={FaCodepen}
+    icon={<FaCodepen />}
     bgColor="bg-yellow"
     color="text-black"
     label="Backend"
@@ -28,7 +28,7 @@ export const BackendTag = (
 );
 
 export const FullstackTag = (
-  <Tag icon={FaCode} bgColor="bg-pink" label="Fullstack" />
+  <Tag icon={<FaCode />} bgColor="bg-pink" label="Fullstack" />
 );
 
 export default Tag;

@@ -13,6 +13,7 @@ const Blogs = () => {
           tags={blog.tags}
           summary={blog.summary}
           index={index}
+          key={index}
         />
       ))}
     </div>

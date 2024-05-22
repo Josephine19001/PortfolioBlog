@@ -18,6 +18,7 @@ const FilterTags = ({ activeTag, onTagClick }) => {
         px-4 py-2 rounded-sm cursor-pointer hover:bg-secondary
       `}
           onClick={() => onTagClick(tag.key)}
+          key={tag.key}
         >
           <span>{tag.label}</span>
         </div>
