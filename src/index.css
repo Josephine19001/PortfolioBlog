@@ -104,4 +104,11 @@
   .hide-scroll::webkit-scrollbar {
     display: none;
   }
+  .resume-base {
+    @apply rounded-md bg-darkBlue p-5 flex flex-col gap-5;
+
+    & > h4 {
+      @apply text-xl;
+    }
+  }
 }
