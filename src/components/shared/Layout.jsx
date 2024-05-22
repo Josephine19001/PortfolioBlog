@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import ScrollToAnchor from './ScrollToAnchor';
 
 export const Divider = () => {
   return (
@@ -31,6 +32,7 @@ export const SectionLayout = ({ title, subTitle, children }) => {
 const Layout = ({ children }) => {
   return (
     <div className="flex flex-col h-screen">
+      <ScrollToAnchor />
       <NavBar />
 
       {children}
