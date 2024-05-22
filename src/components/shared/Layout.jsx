@@ -18,7 +18,7 @@ export const SectionLayout = ({ title, subTitle, children }) => {
 
       <div className="flex flex-col justify-center items-start md:items-center">
         <div className="md:text-center md:mb-10 md:px-40 mb-5">
-          <h2>{title}</h2>
+          <h2 className="mb-5">{title}</h2>
           <p>{subTitle}</p>
         </div>
 

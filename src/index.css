@@ -96,4 +96,12 @@
       content: '';
     }
   }
+
+  .hide-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scroll::webkit-scrollbar {
+    display: none;
+  }
 }
