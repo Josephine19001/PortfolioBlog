@@ -4,7 +4,7 @@ import { skills } from './content';
 
 const LeftSide = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       <div className="resume-base">
         <img
           className="rounded-lg w-full mb-2"

@@ -41,7 +41,7 @@ const RightSide = () => {
           ))}
         </div>
       </div>
-      <div className="resume-base mt-10">
+      <div className="resume-base mt-5">
         <h4>Education</h4>
 
         <div className="flex flex-col gap-5">
