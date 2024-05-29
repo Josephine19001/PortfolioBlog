@@ -22,7 +22,7 @@ const Projects = () => {
       <div className="mb-10">
         <FilterTags activeTag={activeTag} onTagClick={handleOnTagClick} />
       </div>
-      <div className="flex md:justify-center overflow-x-scroll w-full hide-scroll">
+      <div className="flex overflow-x-scroll w-full hide-scroll">
         <div className="flex gap-10">
           {filteredProjects.map((project, index) => (
             <ProjectItem
