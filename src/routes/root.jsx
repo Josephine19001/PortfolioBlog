@@ -7,12 +7,12 @@ import ServicesSection from '../components/home/services';
 import FAQSection from '../components/home/faqs';
 import ContactMeSection from '../components/home/ContactMeSection';
 
-const Home = () => {
+const Home = ({ blogs }) => {
   return (
     <Layout>
       <HeroSection />
       <ProjectSection />
-      <BlogsSection />
+      {blogs && <BlogsSection blogs={blogs} />}
       <TestimonialsSection />
       <ServicesSection />
       <FAQSection />

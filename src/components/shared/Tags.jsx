@@ -6,7 +6,7 @@ const Tags = ({ tags }) => {
       <div className="flex gap-2 flex-wrap">
         {tags.map((tag, index) => (
           <span
-            className={`px-2 py-1 text-sm rounded opacity-70
+            className={`px-2 py-1 text-sm rounded opacity-70 capitalize
           ${
             index % 5 === 0
               ? 'bg-primary'

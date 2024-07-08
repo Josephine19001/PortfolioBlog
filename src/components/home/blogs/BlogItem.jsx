@@ -1,8 +1,19 @@
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
-import Tags from './Tags';
+import Tags from '../../shared/Tags';
+import { useNavigate } from 'react-router-dom';
+import { generateBlogLink } from '../../../utils/blogLinkGenerator';
+import { useScrollToTop } from '../../../hooks/useScrollToTop';
 
 const BlogItem = ({ image, title, summary, tags, index }) => {
+  const navigate = useNavigate();
+  const { scrollTop } = useScrollToTop();
+
+  const handleBlogClick = () => {
+    navigate(generateBlogLink(title));
+    scrollTop();
+  };
+
   return (
     <div
       key={index}
@@ -22,7 +33,7 @@ const BlogItem = ({ image, title, summary, tags, index }) => {
         <h3 className="text-2xl font-semibold">{title}</h3>
         <p>{summary}</p>
         <Tags tags={tags} />
-        <button className="btn-secondary">
+        <button className="btn-secondary" onClick={handleBlogClick}>
           <span>Read more</span>
           <FaArrowRight className="inline ml-2" />
         </button>

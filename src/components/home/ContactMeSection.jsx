@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { SectionLayout } from '../shared/Layout';
+
+const BASE_URL = 'http://localhost:3030';
 
 const ContactMe = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +11,8 @@ const ContactMe = () => {
     subject: '',
     message: ''
   });
+  const [statusMessage, setStatusMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleOnChange = (event) => {
     setFormData((prev) => ({
@@ -16,9 +21,15 @@ const ContactMe = () => {
     }));
   };
 
+  const sendMail = async (event) => {
+    event.preventDefault();
+
+    // Send email
+  };
+
   return (
     <div className="w-full max-w-2xl mx-auto p-6" id="contact">
-      <form className="flex fle-wrap flex-col gap-10">
+      <form className="flex fle-wrap flex-col gap-10" onSubmit={sendMail}>
         <div className="flex flex-col md:flex-row gap-10">
           <input
             placeholder="Enter your name"
@@ -54,11 +65,17 @@ const ContactMe = () => {
           value={formData.message}
           onChange={handleOnChange}
         />
-
         <div className="self-end">
-          <button className="btn-secondary">Send</button>
+          <button className="btn-secondary" type="submit">
+            Send
+          </button>
         </div>
       </form>
+      {statusMessage && (
+        <p className={isError ? 'text-red-500' : 'text-green-500'}>
+          {statusMessage}
+        </p>
+      )}
     </div>
   );
 };
