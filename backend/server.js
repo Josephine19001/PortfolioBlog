@@ -29,36 +29,40 @@ app.post('/api/send-mail', (req, res) => {
   if (!from || !subject || !message) {
     return res
       .status(400)
-      .send('Missing required fields: from, subject, message.');
+      .send('Missing required Fields: from, subject,message');
   }
 
+  // Handle sending email to ourselves
   const receivedMailOptions = {
-    from: process.env.GMAIL_USER_NAME,
+    from,
     to: process.env.GMAIL_USER_NAME,
     subject,
     html: `<p>${message}</p>`
   };
 
+  // Handling auto-reply
   const autoReplyMailOptions = {
     from: process.env.GMAIL_USER_NAME,
     to: from,
-    subject: 'Auto Reply: Email sent successfully!',
-    html: '<p>Thank you for contacting me. I will get back to you as soon as possible.</p>'
+    subject: 'John Doe: Thank you contacting me!',
+    html: `<p>Thank you contacting me! I will get back to you as soon as possible.</p>`
   };
 
   transporter.sendMail(receivedMailOptions, (error) => {
     if (error) {
-      return res.status(500).send('Failed to send email. Please try again.');
+      return res.status(500).send('Failed to send email! Please try again.');
     }
 
     transporter.sendMail(autoReplyMailOptions, (error) => {
       if (error) {
-        return res.status(500).send('Failed to send email. Please try again.');
+        return res
+          .status(500)
+          .send('Failed to send auto email! Please try again.');
       }
 
-      res.send('Email sent successfully!');
+      res.status(200).send('Email sent!');
     });
   });
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
