@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --primary: #16181c;
+  --secondary: #494d58;
+
+  /* Applies to Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Applies to WebKit-based browsers: Google Chrome, Safari, Microsoft Edge (Chromium-based), and Opera */
+*::-webkit-scrollbar {
+  width: 15px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 2px solid var(--primary);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body,
+  html {
+    @apply bg-primaryBg text-textMain p-2 xl:px-20 xl:py-2 scroll-smooth;
+    font-family: 'Poppins', sans-serif;
+  }
+  h1 {
+    @apply text-6xl md:text-8xl font-extrabold;
+  }
+  h2 {
+    @apply capitalize text-3xl md:text-5xl font-bold;
+  }
+  h3 {
+    @apply capitalize text-lg md:text-xl font-bold;
+  }
+  p {
+    @apply text-textSecondary text-sm md:text-base;
+  }
+
+  ul {
+    @apply list-none;
+  }
+  li {
+    @apply cursor-pointer;
+  }
+  a {
+    @apply decoration-0 text-textSecondary cursor-pointer;
+  }
+
+  button {
+    @apply text-xs md:text-sm px-5 py-2 rounded-sm text-textMain bg-[transparent] capitalize;
+  }
+  input,
+  textarea {
+    @apply bg-[transparent] outline-none border-b-[0.7px] border-b-white text-textMain w-full focus:border-b-primary;
+  }
+}
+
+@layer utilities {
+  .btn-primary {
+    @apply bg-primary hover:bg-primaryBg hover:border hover:border-primary hover:text-primary;
+  }
+
+  .btn-secondary {
+    @apply border border-secondary text-secondary border-b-2 hover:bg-secondary hover:text-black;
+  }
+
+  .hover-underline {
+    @apply inline-block relative pb-2;
+
+    &::after {
+      @apply absolute bottom-0 left-1/2 w-0 bg-secondary h-[2px]  ease-linear duration-150;
+      content: '';
+      transition: width 150ms ease-linear;
+    }
+
+    &:hover::after {
+      @apply w-full left-0;
+    }
+  }
+
+  .active-link-underline {
+    @apply inline-block relative pb-2;
+
+    &::after {
+      @apply absolute bottom-0 left-0 w-full bg-secondary h-[2px];
+      content: '';
+    }
+  }
+
+  .hide-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scroll::webkit-scrollbar {
+    display: none;
+  }
+  .resume-base {
+    @apply rounded-md bg-darkBlue p-5 flex flex-col gap-5;
+
+    & > h4 {
+      @apply text-xl;
+    }
+  }
+}
