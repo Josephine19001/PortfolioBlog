@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { FaSpinner, FaExclamationCircle } from 'react-icons/fa';
 import axios from 'axios';
-import { SectionLayout } from '../shared/Layout';
 
 const BASE_URL = 'http://localhost:3030';
 
@@ -11,6 +11,7 @@ const ContactMe = () => {
     subject: '',
     message: ''
   });
+  const [isSending, setIsSending] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [isError, setIsError] = useState(false);
 
@@ -23,13 +24,27 @@ const ContactMe = () => {
 
   const sendMail = async (event) => {
     event.preventDefault();
+    setIsSending(true);
+    try {
+      await axios.post(`${BASE_URL}/api/send-mail`, {
+        from: formData.email,
+        subject: formData.subject,
+        html: formData.message
+      });
 
-    // Send email
+      setStatusMessage('Email sent successfully!');
+      setIsError(false);
+    } catch (error) {
+      setStatusMessage('Failed to send email. Please try again.');
+      setIsError(true);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <div className="w-full max-w-2xl mx-auto p-6" id="contact">
-      <form className="flex fle-wrap flex-col gap-10" onSubmit={sendMail}>
+      <form className="flex flex-wrap flex-col gap-10" onSubmit={sendMail}>
         <div className="flex flex-col md:flex-row gap-10">
           <input
             placeholder="Enter your name"
@@ -59,35 +74,29 @@ const ContactMe = () => {
         <textarea
           placeholder="Your message"
           name="message"
-          type="text"
           rows="5"
           required
           value={formData.message}
           onChange={handleOnChange}
         />
         <div className="self-end">
-          <button className="btn-secondary" type="submit">
-            Send
+          <button className="btn-secondary" type="submit" disabled={isSending}>
+            {isSending ? <FaSpinner className="animate-spin" /> : 'Send'}
           </button>
         </div>
       </form>
       {statusMessage && (
-        <p className={isError ? 'text-red-500' : 'text-green-500'}>
-          {statusMessage}
-        </p>
+        <div
+          className={`flex items-center gap-2 ${
+            isError ? 'text-red-500' : 'text-green-500'
+          }`}
+        >
+          {isError && <FaExclamationCircle />}
+          <p>{statusMessage}</p>
+        </div>
       )}
     </div>
   );
 };
 
-const ContactMeSection = () => {
-  return (
-    <SectionLayout
-      title="Contact me"
-      subTitle="Interested in working together? Let's get in touch"
-      children={<ContactMe />}
-    />
-  );
-};
-
-export default ContactMeSection;
+export default ContactMe;
